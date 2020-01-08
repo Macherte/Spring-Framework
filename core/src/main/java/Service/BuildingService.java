@@ -1,15 +1,16 @@
 package Service;
 
+import RealEstate.Exceptions.*;
 import RealEstate.Modules.Building;
 
 import java.util.Collection;
 import java.util.UUID;
 
 public interface BuildingService {
-    Building getBuilding(UUID id);
+    Building getBuilding(UUID id) throws NoMatchingIdException;
     Collection<Building> getAllBuilding();
-    void deleteBuilding(Building building);
-    void deleteBuilding(UUID id);
-    void updateBuilding(Building building);
-    void insertBuilding(Building building);
+    void deleteBuilding(Building building) throws NoMatchingIdException;
+    void deleteBuilding(UUID id) throws NoMatchingIdException;
+    void updateBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException;;
+    void insertBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException;;
 }

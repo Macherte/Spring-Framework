@@ -36,8 +36,8 @@ Service
 	- dao 
 		- BuildingDAO (interface) (throws exceptions)
 			- CreateBuilding
-			- ReadAllBuilding() Collection
-			- ReadAllBuilding(Building) Building
+			- ReadAllBuildings() Collection
+			- ReadBuilding(Building) Building
 			- updateBuilding 
 			- deleteBuilding
 	- services.impl
