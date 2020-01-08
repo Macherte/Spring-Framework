@@ -11,6 +11,6 @@ public interface BuildingDAO {
     void createBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException;
     Collection<Building> readAllBuildings();
     Building readBuilding(UUID id);
-    void updateBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException;;
+    void updateBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException, NoMatchingIdException;
     void deleteBuilding(Building building) throws NoMatchingIdException;
 }

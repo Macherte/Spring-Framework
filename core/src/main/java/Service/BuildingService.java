@@ -11,6 +11,6 @@ public interface BuildingService {
     Collection<Building> getAllBuilding();
     void deleteBuilding(Building building) throws NoMatchingIdException;
     void deleteBuilding(UUID id) throws NoMatchingIdException;
-    void updateBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException;;
+    void updateBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException, NoMatchingIdException;;
     void insertBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException;;
 }

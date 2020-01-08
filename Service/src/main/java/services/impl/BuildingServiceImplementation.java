@@ -33,7 +33,8 @@ public class BuildingServiceImplementation implements BuildingService {
         dao.deleteBuilding(building);
     }
 
-    public void updateBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException {
+    public void updateBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException,
+                                                         InvalidUValueException, NoMatchingIdException {
         if (building.getAV_Value() < 0) throw new InvalidAVValueException();
         if (!(building.getR_Value() > 0 && building.getR_Value() < 60)) throw new InvalidRValueException();
         if (!(building.getU_Value() > 0 && building.getU_Value() < 10)) throw new InvalidUValueException();
@@ -42,7 +43,8 @@ public class BuildingServiceImplementation implements BuildingService {
         dao.updateBuilding(building);
     }
 
-    public void insertBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException, InvalidUValueException {
+    public void insertBuilding(Building building) throws InvalidAVValueException, InvalidDateException, InvalidRValueException,
+                                                         InvalidUValueException {
         if (building.getAV_Value() < 0) throw new InvalidAVValueException();
         if (!(building.getR_Value() > 0 && building.getR_Value() < 60)) throw new InvalidRValueException();
         if (!(building.getU_Value() > 0 && building.getU_Value() < 10)) throw new InvalidUValueException();
