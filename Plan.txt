@@ -1,0 +1,71 @@
+core
+	- real estate
+		- models 
+			- Building
+				- type: house, apartment, office, retail unit (enum)
+				- useful floor space (double)
+				- year of construction (date)
+				- city (string)
+				- U-value (double)
+				- R-value (double)
+				- A/V value (double)
+				- low-e glazing windows (bool)
+				- orientation (enum)
+				- water	(bool)
+				- gas (bool)
+				- electricity (bool)
+				- canal (bool)
+		- exceptions
+			- NoMatchingIDException
+			- InvalidDateException
+			- InvalidRValueException
+			- InvalidUValueException
+			- InvalidAVValueException
+			
+	- service (interface)
+		- REService
+			- getRealEstate(UUID)
+			- getRealEstate(Building)
+			- deleteRealEstate(Building)
+			- updateRealEstate(Building)
+			- insertRealEstate(Building)
+	
+Service	
+		dependency: artifactId core
+	- dao 
+		- REDAO (interface) (throws exceptions)
+			- CreateRE
+			- ReadAllRE() Collection
+			- ReadAllRE(RE) RE
+			- updateRE 
+			- deleteRE 
+	- services.impl
+		- REServiceImplementation (throws exceptions, implements REService with REDAO dependency injection)
+		
+DAO
+		dependency: artifactId Service, jackson-databind, jackson-datatype-jsr310
+	- dao.impl.json
+		REDAOJSON implements REDAO
+		
+		
+Controller
+		dependency: artifactId core, spring-webmvc
+	- controllers
+		REController
+			- countRE: GET, /count
+			- getAllRE: GET, /realestates
+			- addRE: POST, /addrealestate
+			- getREByType: GET, /realestates/{type}
+			- getREById: GET, /realestateid/{id}
+			- deleteRE, 
+			
+			implementation of exceptions
+			
+Web
+		dependency: artifactId spring-webmvc, controller, dao, 
+		
+	dispatcher-config.xml
+	web.xml
+	
+	
+Tomcat
