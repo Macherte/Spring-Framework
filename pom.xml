@@ -11,6 +11,7 @@
         <module>core</module>
         <module>Service</module>
         <module>DAO</module>
+        <module>Controller</module>
     </modules>
 
     <packaging>pom</packaging>
