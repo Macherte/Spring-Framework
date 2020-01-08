@@ -23,41 +23,42 @@ core
 			- InvalidAVValueException
 			
 	- service (interface)
-		- REService
-			- getRealEstate(UUID)
-			- getRealEstate(Building)
-			- deleteRealEstate(Building)
-			- updateRealEstate(Building)
-			- insertRealEstate(Building)
+		- BuildingService
+			- getAllBuilding()
+			- getBuilding(UUID)
+			- getBuilding(Building)
+			- deleteBuilding(Building)
+			- updateBuilding(Building)
+			- insertBuilding(Building)
 	
 Service	
 		dependency: artifactId core
 	- dao 
-		- REDAO (interface) (throws exceptions)
-			- CreateRE
-			- ReadAllRE() Collection
-			- ReadAllRE(RE) RE
-			- updateRE 
-			- deleteRE 
+		- BuildingDAO (interface) (throws exceptions)
+			- CreateBuilding
+			- ReadAllBuilding() Collection
+			- ReadAllBuilding(Building) Building
+			- updateBuilding 
+			- deleteBuilding
 	- services.impl
-		- REServiceImplementation (throws exceptions, implements REService with REDAO dependency injection)
+		- BuildingServiceImplementation (throws exceptions, implements BuildingService with BuildingDAO dependency injection)
 		
 DAO
 		dependency: artifactId Service, jackson-databind, jackson-datatype-jsr310
 	- dao.impl.json
-		REDAOJSON implements REDAO
+		BuildingDAOJSON implements BuildingDAO
 		
 		
 Controller
 		dependency: artifactId core, spring-webmvc
 	- controllers
-		REController
-			- countRE: GET, /count
-			- getAllRE: GET, /realestates
-			- addRE: POST, /addrealestate
-			- getREByType: GET, /realestates/{type}
-			- getREById: GET, /realestateid/{id}
-			- deleteRE, 
+		BuildingController
+			- countBuilding: GET, /count
+			- getAllBuilding: GET, /buildings
+			- addBuilding: POST, /addbuilding
+			- getBuildingByType: GET, /buildings/{type}
+			- getBuildingById: GET, /buildings/{id}
+			- deleteBuilding, 
 			
 			implementation of exceptions
 			
