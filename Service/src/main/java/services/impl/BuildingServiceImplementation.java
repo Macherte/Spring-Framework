@@ -38,7 +38,7 @@ public class BuildingServiceImplementation implements BuildingService {
         if (building.getAV_Value() < 0) throw new InvalidAVValueException();
         if (!(building.getR_Value() > 0 && building.getR_Value() < 60)) throw new InvalidRValueException();
         if (!(building.getU_Value() > 0 && building.getU_Value() < 10)) throw new InvalidUValueException();
-        if (building.getYearOfConstruction().isAfter(LocalDate.now().plusYears(3)));
+        if (building.getYearOfConstruction().isAfter(LocalDate.now().plusYears(3))) throw new InvalidDateException();
 
         dao.updateBuilding(building);
     }
@@ -48,7 +48,7 @@ public class BuildingServiceImplementation implements BuildingService {
         if (building.getAV_Value() < 0) throw new InvalidAVValueException();
         if (!(building.getR_Value() > 0 && building.getR_Value() < 60)) throw new InvalidRValueException();
         if (!(building.getU_Value() > 0 && building.getU_Value() < 10)) throw new InvalidUValueException();
-        if (building.getYearOfConstruction().isAfter(LocalDate.now().plusYears(3)));
+        if (building.getYearOfConstruction().isAfter(LocalDate.now().plusYears(3))) throw new InvalidDateException();
 
         dao.createBuilding(building);
     }
