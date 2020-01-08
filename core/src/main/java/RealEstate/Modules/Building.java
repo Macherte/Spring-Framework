@@ -1,8 +1,10 @@
 package RealEstate.Modules;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Building {
+    private UUID id;
     private BuildingType buildingType;
     private double usefulFloorSpace;
     private LocalDate yearOfConstruction;
@@ -16,6 +18,37 @@ public class Building {
     private boolean gas;
     private boolean electricity;
     private boolean canal;
+
+    public Building(BuildingType buildingType, double usefulFloorSpace, LocalDate yearOfConstruction, String city, double u_Value,
+                    double r_Value, double AV_Value, boolean lowEGlazingWindows, Orientation orientation, boolean water,
+                    boolean gas, boolean electricity, boolean canal) {
+        this();
+        this.buildingType = buildingType;
+        this.usefulFloorSpace = usefulFloorSpace;
+        this.yearOfConstruction = yearOfConstruction;
+        this.city = city;
+        U_Value = u_Value;
+        R_Value = r_Value;
+        this.AV_Value = AV_Value;
+        this.lowEGlazingWindows = lowEGlazingWindows;
+        this.orientation = orientation;
+        this.water = water;
+        this.gas = gas;
+        this.electricity = electricity;
+        this.canal = canal;
+    }
+
+    public Building() {
+        this.id = UUID.randomUUID();
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public BuildingType getBuildingType() {
         return buildingType;
