@@ -14,7 +14,7 @@
     <bean class = "dao.impl.json.BuildingDAOJSON" id="buildingDAOJSON" scope="singleton">
         <constructor-arg name="jsonFilePath" value="building.json"/>
     </bean>
-    <bean class = "services.impl.BuildingServiceImplementation" id="buildingServiceImplementation" scope="request">
+    <bean class = "services.impl.BuildingServiceImplementation" id="buildingServiceImplementation">
         <constructor-arg name="dao" ref="buildingDAOJSON"/>
     </bean>
 
