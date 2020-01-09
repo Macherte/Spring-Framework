@@ -10,6 +10,7 @@
         <module name="DAO" />
         <module name="Controller" />
         <module name="Service" />
+        <module name="Web" />
       </profile>
     </annotationProcessing>
   </component>
