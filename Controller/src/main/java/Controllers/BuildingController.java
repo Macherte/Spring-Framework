@@ -4,19 +4,18 @@ import RealEstate.Exceptions.*;
 import RealEstate.Modules.Building;
 import RealEstate.Modules.BuildingType;
 import Service.BuildingService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
+@RestController
 public class BuildingController {
     private BuildingService service;
 
-    public BuildingController(BuildingService service) {
+    public BuildingController(@Autowired BuildingService service) {
         this.service = service;
     }
 
