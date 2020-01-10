@@ -9,9 +9,9 @@ public class Building {
     private double usefulFloorSpace;
     private LocalDate yearOfConstruction;
     private String city;
-    private double U_Value;
-    private double R_Value;
-    private double AV_Value;
+    private double u_Value;
+    private double r_Value;
+    private double av_Value;
     private boolean lowEGlazingWindows;
     private Orientation orientation;
     private boolean water;
@@ -20,16 +20,16 @@ public class Building {
     private boolean canal;
 
     public Building(BuildingType buildingType, double usefulFloorSpace, LocalDate yearOfConstruction, String city, double u_Value,
-                    double r_Value, double AV_Value, boolean lowEGlazingWindows, Orientation orientation, boolean water,
+                    double r_Value, double av_Value, boolean lowEGlazingWindows, Orientation orientation, boolean water,
                     boolean gas, boolean electricity, boolean canal) {
         this();
         this.buildingType = buildingType;
         this.usefulFloorSpace = usefulFloorSpace;
         this.yearOfConstruction = yearOfConstruction;
         this.city = city;
-        U_Value = u_Value;
-        R_Value = r_Value;
-        this.AV_Value = AV_Value;
+        this.u_Value = u_Value;
+        this.r_Value = r_Value;
+        this.av_Value = av_Value;
         this.lowEGlazingWindows = lowEGlazingWindows;
         this.orientation = orientation;
         this.water = water;
@@ -83,27 +83,27 @@ public class Building {
     }
 
     public double getU_Value() {
-        return U_Value;
+        return u_Value;
     }
 
     public void setU_Value(double u_Value) {
-        U_Value = u_Value;
+        this.u_Value = u_Value;
     }
 
     public double getR_Value() {
-        return R_Value;
+        return r_Value;
     }
 
     public void setR_Value(double r_Value) {
-        R_Value = r_Value;
+        this.r_Value = r_Value;
     }
 
     public double getAV_Value() {
-        return AV_Value;
+        return av_Value;
     }
 
     public void setAV_Value(double AV_Value) {
-        this.AV_Value = AV_Value;
+        this.av_Value = AV_Value;
     }
 
     public boolean isLowEGlazingWindows() {

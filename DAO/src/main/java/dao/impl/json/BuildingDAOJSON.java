@@ -63,7 +63,7 @@ public class BuildingDAOJSON implements BuildingDAO {
     }
 
     public void createBuilding(Building building) {
-        Collection<Building> buildings = new ArrayList<Building>();
+        Collection<Building> buildings = readAllBuildings();
         buildings.add(building);
 
         try{
@@ -80,8 +80,7 @@ public class BuildingDAOJSON implements BuildingDAO {
     public Collection<Building> readAllBuildings() {
         Collection<Building> buildings = new ArrayList<Building>();
         try{
-            buildings = mapper.readValue(jsonFile, new TypeReference<Collection<Building>>() {
-            });
+            buildings = mapper.readValue(jsonFile, new TypeReference<ArrayList<Building>>() {});
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -100,22 +99,26 @@ public class BuildingDAOJSON implements BuildingDAO {
                 return item;
             }
         }
-        throw new NoMatchingIdException();
+        throw new NoMatchingIdException(id.toString());
     }
 
     public void updateBuilding(Building building) throws NoMatchingIdException {
-        Building toDelete = new Building();
-        toDelete.setId(building.getId());
+        Building toDelete = readBuilding(building.getId());
         deleteBuilding(toDelete);
         createBuilding(building);
     }
 
     public void deleteBuilding(Building building) throws NoMatchingIdException {
         Collection<Building> buildings = readAllBuildings();
+        Collection<Building> list = new ArrayList<Building>();
         try{
             Building toDelete = readBuilding(building.getId());
-            buildings.remove(toDelete);
-            mapper.writeValue(jsonFile, buildings);
+            for (Building item : buildings){
+                if(!item.getId().equals(toDelete.getId())){
+                    list.add(item);
+                }
+            }
+            mapper.writeValue(jsonFile, list);
         } catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {

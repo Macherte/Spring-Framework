@@ -33,7 +33,7 @@ public class BuildingController {
 
     @RequestMapping(value = "/buildings/add", method = RequestMethod.POST)
     @ResponseBody
-    public Building addNewBuilding(Building building) throws InvalidDateException, InvalidAVValueException, InvalidRValueException,
+    public Building addNewBuilding(@RequestBody Building building) throws InvalidDateException, InvalidAVValueException, InvalidRValueException,
                                                              InvalidUValueException, NoMatchingIdException {
         service.insertBuilding(building);
         return service.getBuilding(building.getId());
@@ -92,8 +92,38 @@ public class BuildingController {
 
     @RequestMapping(value="/buildings/update", method = RequestMethod.PUT)
     @ResponseBody
-    public void updateBuilding(Building building) throws InvalidDateException, InvalidAVValueException, NoMatchingIdException,
+    public void updateBuilding(@RequestBody Building building) throws InvalidDateException, InvalidAVValueException, NoMatchingIdException,
                                                          InvalidRValueException, InvalidUValueException {
         service.updateBuilding(building);
+    }
+
+    @ExceptionHandler(NoMatchingIdException.class)
+    @ResponseBody
+    public String handleNoMatchingIdException(Exception e){
+        return "Non-existent UUID: " + e.getMessage();
+    }
+
+    @ExceptionHandler(InvalidAVValueException.class)
+    @ResponseBody
+    public String handleInvalidAVValueException(Exception e){
+        return "A/V value is invalid: must be a positive number!";
+    }
+
+    @ExceptionHandler(InvalidDateException.class)
+    @ResponseBody
+    public String handleInvalidDateException(Exception e){
+        return "Construction date must be within three years from today!";
+    }
+
+    @ExceptionHandler(InvalidRValueException.class)
+    @ResponseBody
+    public String handleInvalidRValueException(Exception e){
+        return "R value has to be more than 0 and less than 60!" + e.getMessage();
+    }
+
+    @ExceptionHandler(InvalidUValueException.class)
+    @ResponseBody
+    public String handleInvalidUValueException(Exception e){
+        return "U value has to be more than 0 and less then 10!";
     }
 }
