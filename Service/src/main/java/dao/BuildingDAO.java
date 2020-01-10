@@ -11,6 +11,6 @@ public interface BuildingDAO {
     void createBuilding(Building building);
     Collection<Building> readAllBuildings();
     Building readBuilding(UUID id) throws NoMatchingIdException;
-    void updateBuilding(Building building) throws NoMatchingIdException;
+    void updateBuilding(UUID id, Building building) throws NoMatchingIdException;
     void deleteBuilding(Building building) throws NoMatchingIdException;
 }

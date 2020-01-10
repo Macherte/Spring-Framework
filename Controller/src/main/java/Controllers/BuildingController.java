@@ -54,7 +54,7 @@ public class BuildingController {
 
     @RequestMapping(value = "/buildings/U/{U}", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<Building> getBuildingByUValue(@PathVariable double U){
+    public Collection<Building> listBuildingByUValue(@PathVariable double U){
         Collection<Building> buildings = service.getAllBuilding();
         Collection<Building> list = new ArrayList<Building>();
         for (Building item : buildings){
@@ -67,7 +67,7 @@ public class BuildingController {
 
     @RequestMapping(value = "/buildings/R/{R}", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<Building> getBuildingByRValue(@PathVariable double R){
+    public Collection<Building> listBuildingByRValue(@PathVariable double R){
         Collection<Building> buildings = service.getAllBuilding();
         Collection<Building> list = new ArrayList<Building>();
         for (Building item : buildings){
@@ -86,15 +86,16 @@ public class BuildingController {
 
     @RequestMapping(value="/buildings/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void deleteBuildingById(@PathVariable UUID id) throws NoMatchingIdException {
+    public String deleteBuildingById(@PathVariable UUID id) throws NoMatchingIdException {
         service.deleteBuilding(id);
+        return "Deletion successful";
     }
 
-    @RequestMapping(value="/buildings/update", method = RequestMethod.PUT)
+    @RequestMapping(value="/buildings/update/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public void updateBuilding(@RequestBody Building building) throws InvalidDateException, InvalidAVValueException, NoMatchingIdException,
+    public void updateBuilding(@PathVariable UUID id, @RequestBody Building building) throws InvalidDateException, InvalidAVValueException, NoMatchingIdException,
                                                          InvalidRValueException, InvalidUValueException {
-        service.updateBuilding(building);
+        service.updateBuilding(id, building);
     }
 
     @ExceptionHandler(NoMatchingIdException.class)

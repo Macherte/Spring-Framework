@@ -102,8 +102,9 @@ public class BuildingDAOJSON implements BuildingDAO {
         throw new NoMatchingIdException(id.toString());
     }
 
-    public void updateBuilding(Building building) throws NoMatchingIdException {
-        Building toDelete = readBuilding(building.getId());
+    public void updateBuilding(UUID id, Building building) throws NoMatchingIdException {
+
+        Building toDelete = readBuilding(id);
         deleteBuilding(toDelete);
         createBuilding(building);
     }
