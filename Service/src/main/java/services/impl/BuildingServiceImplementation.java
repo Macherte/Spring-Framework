@@ -24,10 +24,6 @@ public class BuildingServiceImplementation implements BuildingService {
         return dao.readAllBuildings();
     }
 
-    public void deleteBuilding(Building building) throws NoMatchingIdException{
-        dao.deleteBuilding(building);
-    }
-
     public void deleteBuilding(UUID id) throws NoMatchingIdException {
         Building building = dao.readBuilding(id);
         dao.deleteBuilding(building);
