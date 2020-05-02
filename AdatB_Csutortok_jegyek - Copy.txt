@@ -1,19 +1,19 @@
-Betenbuk Viktor			J4X0U7		1
+﻿Betenbuk Viktor			J4X0U7		1
 Dombi Tibor Dávid		HL5U4V		3
 Hamar Dávid				MMMY7W		3
 Imre Dávid Levente		JKWIV1		4
 Juhász Bálint			DXIPQ0		4
-Kovács Tamás			HX74L7		1
-Lovász Ákos				FMNUMU		4	
+Kovács Tamás			HX74L7		1	4	
 Molnár Levente			K2R8DF		1
-Pap Gábor				T5G3WU		1
+Pap Gábor				T5G3WU	
+
+asf	1
 Soós Gergő				DNNRDS		3
 Szabó Nóra				DT3Y8X		1
 Szabó Péter				KLDT76		2
 Széles-Kovács Gyula		ODFKJ0		5
 Tamasi Marcell			BAQEKJ		5
-Török Gabriella			JP4K2T		1
-Vajda Krisztián			IPZ60W		5
+Török Gabriella			JP4K2T		15
 
 
 1: 27
